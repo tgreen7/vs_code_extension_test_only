@@ -1,5 +1,5 @@
 {
-  "name": "vs_code_extension_test_only",
+  "name": "vs-code-extension-test-only",
   "displayName": "Test Only",
   "description": "Keyboard shortcut to add/remove it.only for testing ",
   "version": "0.0.1",
