@@ -1,11 +1,21 @@
 {
-  "name": "vs_code_test_only",
+  "name": "vs_code_extension_test_only",
   "displayName": "Test Only",
   "description": "Keyboard shortcut to add/remove it.only for testing ",
   "version": "0.0.1",
+  "publisher": "tgreen7",
   "engines": {
     "vscode": "^1.53.0"
   },
+	"homepage": "https://github.com/tgreen7/vs_code_extension_test_only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tgreen7/vs_code_extension_test_only"
+  },
+  "bugs": {
+    "url": "https://github.com/tgreen7/vs_code_extension_test_only/issues"
+  },
+  "license": "MIT",
   "categories": [
     "Other"
   ],
