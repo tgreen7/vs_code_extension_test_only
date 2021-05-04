@@ -55,7 +55,7 @@ function activate(context) {
             vscode.window.showWarningMessage("No it statement found!");
           }
         }
-        let startingLine = editor.selection.active.line;
+        const startingLine = editor.selection.active.line;
         tryToInsert(startingLine);
       } catch (error) {
         console.error("error:", error);
