@@ -2,7 +2,7 @@
   "name": "vs-code-extension-test-only",
   "displayName": "Test Only",
   "description": "Keyboard shortcut to add/remove it.only for testing ",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "tgreen7",
   "engines": {
     "vscode": "^1.53.0"
