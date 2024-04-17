@@ -29,7 +29,7 @@ function activate(context) {
             const hasDescribeOnly = activeText.match(/^\s*describe\.only\(/);
             const hasIt = activeText.match(/^\s*it\(/);
             const hasItOnly = activeText.match(/^\s*it\.only\(/);
-            if (hasIt || hasItOnly || hasDescribe) {
+            if (hasIt || hasItOnly || hasDescribe || hasDescribeOnly) {
               editor.edit((editBuilder) => {
                 const fromIt = "it(";
                 const toIt = "it.only(";
@@ -42,9 +42,9 @@ function activate(context) {
                   // will have been removed along with others
                   return;
                 }
-                  let newLine;
-                  if (hasIt) newLine = activeText.replace(fromIt, toIt);
-                  if (hasDescribe) newLine = activeText.replace(fromDesc, toDesc);
+                let newLine;
+                if (hasIt) newLine = activeText.replace(fromIt, toIt);
+                if (hasDescribe) newLine = activeText.replace(fromDesc, toDesc);
                 const range = new vscode.Range(
                   lineNumberToCheck,
                   0,
@@ -61,14 +61,18 @@ function activate(context) {
               tryToInsert(lineNumberToCheck - 1);
             }
           } else {
-            vscode.window.showWarningMessage("No it or describe statements were found!");
+            vscode.window.showWarningMessage(
+              "No it or describe statements were found!"
+            );
           }
         }
         const startingLine = editor.selection.active.line;
         tryToInsert(startingLine);
       } catch (error) {
         console.error("error:", error);
-        vscode.window.showWarningMessage("No it or describe statements were found!");
+        vscode.window.showWarningMessage(
+          "No it or describe statements were found!"
+        );
       }
     }
   );
@@ -109,9 +113,9 @@ async function removeOnlyHandler(_editBuilder) {
         linesToEdit.forEach((lineNumber) => {
           const activeLine = editor.document.lineAt(lineNumber);
           const activeText = activeLine.text;
-          let newLine;
-          if (hasItOnly) newLine = activeText.replace("it.only(", "it(");
-          if (hasDescribeOnly) newLine = activeText.replace("describe.only(", "describe(");
+          const newLine = activeText
+            .replace("it.only(", "it(")
+            .replace("describe.only(", "describe(");
           const range = new vscode.Range(
             lineNumber,
             0,
